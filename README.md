@@ -1,4 +1,2 @@
-# Genesis220.github.io
-# Genesis220.github.io
-# Genesis220.github.io
-# Genesis220.github.io
+Ridirect, please click the link
+https://genesis220.github.io/stuff.html
