@@ -3,79 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Eglinton and Young Computers</title>
-    <style>
-             body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #111;
-            color: white;
-        }
-        header {
-            background-color: #b30000; /* Dominant red */
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav {
-            text-align: center;
-            background-color: #000000;
-            padding: 0.5rem;
-            font-size: 1.2rem;
-        }
-        nav a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
-        }
-        nav a:hover {
-            color: #007BFF; /* Blue accent */
-        }
-        section {
-            padding: 2rem;
-            text-align: center;
-        }
-        footer {
-            background-color: #000000;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    <title>Contact Us | Eglinton and Young Computers</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <header>
-        <h1>Contact Us</h1>
+        <h1>Welcome to Eglinton and Young Computers</h1>
+        <p>Your custom PC building experts</p>
     </header>
-    
+
     <nav>
-        <a href="index.html">Home</a>
+        <a href="computers.html">Home</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact Us</a>
     </nav>
     
-    <section>
-        <h2>Get in Touch</h2>
-        <form action="mailto:nathanlau2008@gmail.com" method="POST" enctype="text/plain">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Your Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            
-            <input type="submit" value="Send">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>If you'd like to request a custom build or any modifications/upgrades, please fill out the form below and provide the necessary details about your requirements.</p>
+
+        <!-- Build Requests Section -->
+        <div class="guidelines">
+            <h2>Guidelines for Build Requests</h2>
+            <p>Please include the following information to help us understand your PC needs:</p>
+            <ul>
+                <li><b>Price range:</b> How much are you willing to spend on this PC?</li>
+                <li><b>Purpose:</b> What will the PC primarily be used for? (e.g., gaming, video editing, programming, etc.)</li>
+                <li><b>Preferred Components:</b> Any specific components you want? (e.g., processor, graphics card, RAM)</li>
+                <li><b>Performance Requirements:</b> Any performance standards or benchmarks you're aiming for?</li>
+                <li><b>Other Features:</b> Any other features you'd like? (e.g., cooling system, RGB lighting, overclocking capabilities)</li>
+                <li><b>If you don't know any of this info, don't worry! I can arrange a meeting and we can talk about what type of computer you are looking for.</b></li>
+            </ul>
+        </div>
+
+        <!-- PC Modifications/Upgrades Section -->
+        <div class="guidelines">
+            <h2>Guidelines for PC Modifications/Upgrades</h2>
+            <p>For upgrade or modification requests, please include:</p>
+            <ul>
+                <li><b>Current PC Specs:</b> What components are currently installed in your system?</li>
+                <li><b>Upgrade Goals:</b> What are you hoping to improve? (e.g., performance, graphics, storage)</li>
+                <li><b>Budget:</b> How much are you willing to spend on upgrades?</li>
+                <li><b>Again, don't stress the details, we can figure it out later!</b></li>
+            </ul>
+        </div>
+
+        <!-- Miscellaneous Contacts Section -->
+        <div class="guidelines">
+            <h2>Miscellaneous Contacts</h2>
+            <p>If you have other inquiries or requests, feel free to send a message, and I'll get back to you as soon as possible.</p>
+        </div>
+
+        <!-- Contact Form -->
+        <form action="https://formspree.io/f/movazqjy" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="_replyto" placeholder="Your Email" required>
+
+            <label for="pc-details">Message:</label>
+            <textarea id="pc-details" name="pc-details" placeholder="Provide details here..." rows="8" required></textarea>
+
+            <button type="submit">Send Message</button>
         </form>
-    </section>
-    
-    <footer>
-        <p>&copy; 2024 Eglinton and Young Computers</p>
-    </footer>
+    </div>
+
 </body>
 </html>
