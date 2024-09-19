@@ -1,74 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Eglinton and Young Computers</title>
-    <link rel="stylesheet" href="style.css">
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Contact Us</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-</head>
-<body>
-    <header>
-        <h1>Welcome to Eglinton and Young Computers</h1>
-        <p>Your custom PC building experts</p>
-    </header>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-    <nav>
-        <a href="computers.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact Us</a>
-    </nav>
-    
-    <div class="container">
-        <h1>Contact Us</h1>
-        <p>If you'd like to request a custom build or any modifications/upgrades, please fill out the form below and provide the necessary details about your requirements.</p>
+				<!-- Header -->
+				<header id="header">
+					<a href="computers.html" class="logo"><strong>Eglinton</strong> <span>Yonge</span></a>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
 
-        <!-- Build Requests Section -->
-        <div class="guidelines">
-            <h2>Guidelines for Build Requests</h2>
-            <p>Please include the following information to help us understand your PC needs:</p>
-            <ul>
-                <li><b>Price range:</b> How much are you willing to spend on this PC?</li>
-                <li><b>Purpose:</b> What will the PC primarily be used for? (e.g., gaming, video editing, programming, etc.)</li>
-                <li><b>Preferred Components:</b> Any specific components you want? (e.g., processor, graphics card, RAM)</li>
-                <li><b>Performance Requirements:</b> Any performance standards or benchmarks you're aiming for?</li>
-                <li><b>Other Features:</b> Any other features you'd like? (e.g., cooling system, RGB lighting, overclocking capabilities)</li>
-                <li><b>If you don't know any of this info, don't worry! I can arrange a meeting and we can talk about what type of computer you are looking for.</b></li>
-            </ul>
-        </div>
+			<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="computers.html">Home</a></li>
+						<li><a href="services.html">Services</a></li>
+						<li><a href="contact.html">Contact</a></li>
+						<li><a href="index.html">Nathan Lau</a></li>
+					</ul>
+				</nav>
 
-        <!-- PC Modifications/Upgrades Section -->
-        <div class="guidelines">
-            <h2>Guidelines for PC Modifications/Upgrades</h2>
-            <p>For upgrade or modification requests, please include:</p>
-            <ul>
-                <li><b>Current PC Specs:</b> What components are currently installed in your system?</li>
-                <li><b>Upgrade Goals:</b> What are you hoping to improve? (e.g., performance, graphics, storage)</li>
-                <li><b>Budget:</b> How much are you willing to spend on upgrades?</li>
-                <li><b>Again, don't stress the details, we can figure it out later!</b></li>
-            </ul>
-        </div>
+				<!-- Main -->
+					<div id="main" class="alt">
 
-        <!-- Miscellaneous Contacts Section -->
-        <div class="guidelines">
-            <h2>Miscellaneous Contacts</h2>
-            <p>If you have other inquiries or requests, feel free to send a message, and I'll get back to you as soon as possible.</p>
-        </div>
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Contact Us</h1>
+									</header>
+									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
+									<form method="post" action="https://formspree.io/f/mldrydzg" target="_blank">
+										<div class="row">
+											<div class="col-6">
+												<input type="text" name="demo-name" id="demo-name" placeholder="Name" />
+											</div>
+											<div class="col-6">
+												<input type="email" name="demo-email" id="demo-email" placeholder="Email" />
+											</div>
+										</div>
+										
+										
+										<br/>
+										<select name="demo-category" id="demo-category" onchange="updatePlaceholder()">
+											<option value="">- Category -</option>
+											<option value="build">Get a computer</option>
+											<option value="repair">Repairs</option>
+											<option value="upgrade">Upgrades</option>
+											<option value="misc">Miscellaneous</option>
+										</select>
+										<br/>
+										<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+										<br/>
+										<div class="col-12">
+											<ul class="actions">
+												<li><input type="submit" value="Send Message" class="primary" /></li>
+												<li><input type="reset" value="Reset" /></li>
+											</ul>
+										</div>
+									</form>
+									<script>
+										function updatePlaceholder() {
+											var category = document.getElementById("demo-category").value;
+											var messageField = document.getElementById("demo-message");
+										
+											switch (category) {
+												case "build":
+													messageField.placeholder = "Please include your price range, particular spec you want, and when would be the best time to contact you.";
+													break;
+												case "repair":
+													messageField.placeholder = "Please include your current computer spec, who built it or if it was prebuilt, and what the problem seems to be";
+													break;
+												case "upgrade":
+													messageField.placeholder = "List the components you currently have, which ones you wish to upgrade, and your performance goals.";
+													break;
+												case "misc":
+													messageField.placeholder = "Enter any other inquiry or request.";
+													break;
+												default:
+													messageField.placeholder = "Enter your message";
+													break;
+											}
+										}
+										</script>
+								</div>
+							</section>
 
-        <!-- Contact Form -->
-        <form action="https://formspree.io/f/movazqjy" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
+					</div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="_replyto" placeholder="Your Email" required>
+								<!-- Footer -->
+								<footer id="footer">
+									<div class="inner">
+										<ul class="icons">
+											<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="https://github.com/Genesis220" class="icon brands alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+											<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+										</ul>
+										<ul class="copyright">
+											<li>&copy; Eglinton & Yonge Computers</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+								</footer>
 
-            <label for="pc-details">Message:</label>
-            <textarea id="pc-details" name="pc-details" placeholder="Provide details here..." rows="8" required></textarea>
+			</div>
 
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-</body>
+	</body>
 </html>
