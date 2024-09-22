@@ -48,25 +48,49 @@
 									<form method="post" action="https://formspree.io/f/mldrydzg" target="_blank">
 										<div class="row">
 											<div class="col-6">
-												<input type="text" name="demo-name" id="demo-name" placeholder="Name" />
+												<input type="text" name="name" id="name" placeholder="Name" />
 											</div>
 											<div class="col-6">
-												<input type="email" name="demo-email" id="demo-email" placeholder="Email" />
+												<input type="email" name="email" id="email" placeholder="Email" />
 											</div>
 										</div>
-										
-										
+									
+										<!-- First Dropdown -->
 										<br/>
-										<select name="demo-category" id="demo-category" onchange="updatePlaceholder()">
+										<select name="category" id="category" onchange="handleChange()">
 											<option value="">- Category -</option>
 											<option value="build">Get a computer</option>
 											<option value="repair">Repairs</option>
 											<option value="upgrade">Upgrades</option>
 											<option value="misc">Miscellaneous</option>
 										</select>
+									
+										<!-- Build Submenu -->
+										<div id="build-options" style="display: none;">
+											<br/>
+											<select name="build-category" id="build-category" onchange="updatePlaceholder()">
+												<option value="">- Select Build Type -</option>
+												<option value="budget">Budget PC</option>
+												<option value="midrange">Mid-Range PC</option>
+												<option value="highend">High-End PC</option>
+											</select>
+										</div>
+									
+										<!-- Repairs Submenu -->
+										<div id="repair-options" style="display: none;">
+											<br/>
+											<select name="repair-category" id="repair-category" onchange="updatePlaceholder()">
+												<option value="">- Select Repair Type -</option>
+												<option value="hardware">Hardware Issues</option>
+												<option value="software">Software Issues</option>
+											</select>
+										</div>
+									
+										<!-- Message Area -->
 										<br/>
-										<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+										<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
 										<br/>
+									
 										<div class="col-12">
 											<ul class="actions">
 												<li><input type="submit" value="Send Message" class="primary" /></li>
@@ -74,30 +98,161 @@
 											</ul>
 										</div>
 									</form>
+									
+									<!-- Combined JavaScript -->
 									<script>
-										function updatePlaceholder() {
-											var category = document.getElementById("demo-category").value;
-											var messageField = document.getElementById("demo-message");
+										// Function to save form data to localStorage
+										function saveFormData() {
+											const name = document.getElementById('name').value;
+											const email = document.getElementById('email').value;
+											const category = document.getElementById('category').value;
+											const buildCategory = document.getElementById('build-category').value;
+											const repairCategory = document.getElementById('repair-category').value;
+											const message = document.getElementById('message').value;
 										
-											switch (category) {
-												case "build":
-													messageField.placeholder = "Please include your price range, particular spec you want, and when would be the best time to contact you.";
-													break;
-												case "repair":
-													messageField.placeholder = "Please include your current computer spec, who built it or if it was prebuilt, and what the problem seems to be";
-													break;
-												case "upgrade":
-													messageField.placeholder = "List the components you currently have, which ones you wish to upgrade, and your performance goals.";
-													break;
-												case "misc":
-													messageField.placeholder = "Enter any other inquiry or request.";
-													break;
-												default:
-													messageField.placeholder = "Enter your message";
-													break;
+											localStorage.setItem('name', name);
+											localStorage.setItem('email', email);
+											localStorage.setItem('category', category);
+											localStorage.setItem('build-category', buildCategory);
+											localStorage.setItem('repair-category', repairCategory);
+											localStorage.setItem('message', message);
+										}
+										
+										// Function to load form data from localStorage
+										function loadFormData() {
+											if (localStorage.getItem('name')) {
+												document.getElementById('name').value = localStorage.getItem('name');
+											}
+											if (localStorage.getItem('email')) {
+												document.getElementById('email').value = localStorage.getItem('email');
+											}
+											if (localStorage.getItem('category')) {
+												document.getElementById('category').value = localStorage.getItem('category');
+												handleChange(); // Call this to show relevant submenu based on the category
+											}
+											if (localStorage.getItem('build-category')) {
+												document.getElementById('build-category').value = localStorage.getItem('build-category');
+											}
+											if (localStorage.getItem('repair-category')) {
+												document.getElementById('repair-category').value = localStorage.getItem('repair-category');
+											}
+											if (localStorage.getItem('message')) {
+												document.getElementById('message').value = localStorage.getItem('message');
 											}
 										}
+										
+										// Function to clear form data from localStorage
+										function clearFormData() {
+											localStorage.removeItem('name');
+											localStorage.removeItem('email');
+											localStorage.removeItem('category');
+											localStorage.removeItem('build-category');
+											localStorage.removeItem('repair-category');
+											localStorage.removeItem('message');
+										}
+										
+										// Existing function to handle category selection and show submenus
+										function handleChange() {
+											var category = document.getElementById("category").value;
+										
+											// Hide both submenus by default
+											document.getElementById("build-options").style.display = "none";
+											document.getElementById("repair-options").style.display = "none";
+										
+											// Show relevant submenu based on the selected category
+											if (category === "build") {
+												document.getElementById("build-options").style.display = "block";
+											} else if (category === "repair") {
+												document.getElementById("repair-options").style.display = "block";
+											}
+										
+											updatePlaceholder(); // Call this to update the message placeholder
+										}
+										
+										// Updating the form's placeholder based on the selection
+										function updatePlaceholder() {
+											var category = document.getElementById("category").value;
+											var buildType = document.getElementById("build-category").value;
+											var repairType = document.getElementById("repair-category").value;
+											var messageField = document.getElementById("message");
+										
+											if (category === "build") {
+												if (buildType === "budget") {
+													messageField.placeholder = "Please specify your budget build requirements.";
+												} else if (buildType === "midrange") {
+													messageField.placeholder = "Please specify your mid-range build requirements.";
+												} else if (buildType === "highend") {
+													messageField.placeholder = "Please specify your high-end build requirements.";
+												} else {
+													messageField.placeholder = "Please specify your build requirements.";
+												}
+											} else if (category === "repair") {
+												if (repairType === "hardware") {
+													messageField.placeholder = "Please describe your hardware issue.";
+												} else if (repairType === "software") {
+													messageField.placeholder = "Please describe your software issue.";
+												} else {
+													messageField.placeholder = "Please describe your repair needs.";
+												}
+											} else {
+												messageField.placeholder = "Enter your message.";
+											}
+										}
+										
+										// Function to auto-fill the form from the URL
+										function autoFillForm() {
+											const params = new URLSearchParams(window.location.search);
+											const category = params.get('category');
+											const buildCategory = params.get('build-category');
+											const repairCategory = params.get('repair-category')
+										
+											// Check if query params exist to autofill the form
+											let queryParamsExist = false;
+											if (category) {
+												queryParamsExist = true;
+												document.getElementById("category").value = category;
+												handleChange(); // Trigger submenu display
+											}
+											if (category === 'build' && buildCategory) {
+												document.getElementById("build-category").value = buildCategory;
+												updatePlaceholder();
+											}
+											if (category === 'repair' && repairCategory) {
+												document.getElementById("repair-category").value = repairCategory;
+												updatePlaceholder();
+											}
+										
+											// If there are query params, save them to localStorage
+											if (queryParamsExist) {
+												saveFormData();
+											}
+										}
+										
+										// Auto-load form data from localStorage or URL when the page loads
+										window.onload = function() {
+											const params = new URLSearchParams(window.location.search);
+											if (params.toString()) {
+												autoFillForm();  // Auto-fill from URL if query params exist
+											} else {
+												loadFormData();  // Load data from localStorage if no query params
+											}
+										};
+										
+										// Event listeners to save form data on changes
+										document.getElementById('name').addEventListener('input', saveFormData);
+										document.getElementById('email').addEventListener('input', saveFormData);
+										document.getElementById('category').addEventListener('change', saveFormData);
+										document.getElementById('build-category').addEventListener('change', saveFormData);
+										document.getElementById('repair-category').addEventListener('change', saveFormData);
+										document.getElementById('message').addEventListener('input', saveFormData);
+										
+										// Add listener for clearing data on form reset
+										document.querySelector('input[type="reset"]').addEventListener('click', clearFormData);
 										</script>
+										
+										
+										
+									
 								</div>
 							</section>
 
