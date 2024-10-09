@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Contact Us</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header">
+					<a href="computers.html" class="logo"><strong>Eglinton</strong> <span>Yonge</span></a>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+			<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="computers.html">Home</a></li>
+						<li><a href="services.html">Services</a></li>
+						<li><a href="contact.html">Contact</a></li>
+						<li><a href="index.html">Nathan Lau</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Contact Us</h1>
+									</header>
+									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
+									<form method="post" action="https://formspree.io/f/mldrydzg" target="_blank">
+										<div class="row">
+											<div class="col-6">
+												<input type="text" name="name" id="name" placeholder="Name" />
+											</div>
+											<div class="col-6">
+												<input type="email" name="email" id="email" placeholder="Email" />
+											</div>
+										</div>
+									
+										<!-- First Dropdown -->
+										<br/>
+										<select name="category" id="category" onchange="handleChange()">
+											<option value="">- Category -</option>
+											<option value="build">Get a computer</option>
+											<option value="repair">Repairs</option>
+											<option value="upgrade">Upgrades</option>
+											<option value="misc">Miscellaneous</option>
+										</select>
+									
+										<!-- Build Submenu -->
+										<div id="build-options" style="display: none;">
+											<br/>
+											<select name="build-category" id="build-category" onchange="updatePlaceholder()">
+												<option value="">- Select Build Type -</option>
+												<option value="budget">Budget PC</option>
+												<option value="midrange">Mid-Range PC</option>
+												<option value="highend">High-End PC</option>
+											</select>
+										</div>
+									
+										<!-- Repairs Submenu -->
+										<div id="repair-options" style="display: none;">
+											<br/>
+											<select name="repair-category" id="repair-category" onchange="updatePlaceholder()">
+												<option value="">- Select Repair Type -</option>
+												<option value="hardware">Hardware Issues</option>
+												<option value="software">Software Issues</option>
+											</select>
+										</div>
+									
+										<!-- Message Area -->
+										<br/>
+										<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+										<br/>
+									
+										<div class="col-12">
+											<ul class="actions">
+												<li><input type="submit" value="Send Message" class="primary" /></li>
+												<li><input type="reset" value="Reset" /></li>
+											</ul>
+										</div>
+									</form>
+									
+									<!-- Combined JavaScript -->
+									<script>
+										// Function to save form data to localStorage
+										function saveFormData() {
+											const name = document.getElementById('name').value;
+											const email = document.getElementById('email').value;
+											const category = document.getElementById('category').value;
+											const buildCategory = document.getElementById('build-category').value;
+											const repairCategory = document.getElementById('repair-category').value;
+											const message = document.getElementById('message').value;
+										
+											localStorage.setItem('name', name);
+											localStorage.setItem('email', email);
+											localStorage.setItem('category', category);
+											localStorage.setItem('build-category', buildCategory);
+											localStorage.setItem('repair-category', repairCategory);
+											localStorage.setItem('message', message);
+										}
+										
+										// Function to load form data from localStorage
+										function loadFormData() {
+											if (localStorage.getItem('name')) {
+												document.getElementById('name').value = localStorage.getItem('name');
+											}
+											if (localStorage.getItem('email')) {
+												document.getElementById('email').value = localStorage.getItem('email');
+											}
+											if (localStorage.getItem('category')) {
+												document.getElementById('category').value = localStorage.getItem('category');
+												handleChange(); // Call this to show relevant submenu based on the category
+											}
+											if (localStorage.getItem('build-category')) {
+												document.getElementById('build-category').value = localStorage.getItem('build-category');
+											}
+											if (localStorage.getItem('repair-category')) {
+												document.getElementById('repair-category').value = localStorage.getItem('repair-category');
+											}
+											if (localStorage.getItem('message')) {
+												document.getElementById('message').value = localStorage.getItem('message');
+											}
+										}
+										
+										// Function to clear form data from localStorage
+										function clearFormData() {
+											localStorage.removeItem('name');
+											localStorage.removeItem('email');
+											localStorage.removeItem('category');
+											localStorage.removeItem('build-category');
+											localStorage.removeItem('repair-category');
+											localStorage.removeItem('message');
+										}
+										
+										// Existing function to handle category selection and show submenus
+										function handleChange() {
+											var category = document.getElementById("category").value;
+										
+											// Hide both submenus by default
+											document.getElementById("build-options").style.display = "none";
+											document.getElementById("repair-options").style.display = "none";
+										
+											// Show relevant submenu based on the selected category
+											if (category === "build") {
+												document.getElementById("build-options").style.display = "block";
+											} else if (category === "repair") {
+												document.getElementById("repair-options").style.display = "block";
+											}
+										
+											updatePlaceholder(); // Call this to update the message placeholder
+										}
+										
+										// Updating the form's placeholder based on the selection
+										function updatePlaceholder() {
+											var category = document.getElementById("category").value;
+											var buildType = document.getElementById("build-category").value;
+											var repairType = document.getElementById("repair-category").value;
+											var messageField = document.getElementById("message");
+										
+											if (category === "build") {
+												if (buildType === "budget") {
+													messageField.placeholder = "Please specify your budget build requirements.";
+												} else if (buildType === "midrange") {
+													messageField.placeholder = "Please specify your mid-range build requirements.";
+												} else if (buildType === "highend") {
+													messageField.placeholder = "Please specify your high-end build requirements.";
+												} else {
+													messageField.placeholder = "Please specify your build requirements.";
+												}
+											} else if (category === "repair") {
+												if (repairType === "hardware") {
+													messageField.placeholder = "Please describe your hardware issue.";
+												} else if (repairType === "software") {
+													messageField.placeholder = "Please describe your software issue.";
+												} else {
+													messageField.placeholder = "Please describe your repair needs.";
+												}
+											} else {
+												messageField.placeholder = "Enter your message.";
+											}
+										}
+										
+										// Function to auto-fill the form from the URL
+										function autoFillForm() {
+											const params = new URLSearchParams(window.location.search);
+											const category = params.get('category');
+											const buildCategory = params.get('build-category');
+											const repairCategory = params.get('repair-category')
+										
+											// Check if query params exist to autofill the form
+											let queryParamsExist = false;
+											if (category) {
+												queryParamsExist = true;
+												document.getElementById("category").value = category;
+												handleChange(); // Trigger submenu display
+											}
+											if (category === 'build' && buildCategory) {
+												document.getElementById("build-category").value = buildCategory;
+												updatePlaceholder();
+											}
+											if (category === 'repair' && repairCategory) {
+												document.getElementById("repair-category").value = repairCategory;
+												updatePlaceholder();
+											}
+										
+											// If there are query params, save them to localStorage
+											if (queryParamsExist) {
+												saveFormData();
+											}
+										}
+										
+										// Auto-load form data from localStorage or URL when the page loads
+										window.onload = function() {
+											const params = new URLSearchParams(window.location.search);
+											if (params.toString()) {
+												autoFillForm();  // Auto-fill from URL if query params exist
+											} else {
+												loadFormData();  // Load data from localStorage if no query params
+											}
+										};
+										
+										// Event listeners to save form data on changes
+										document.getElementById('name').addEventListener('input', saveFormData);
+										document.getElementById('email').addEventListener('input', saveFormData);
+										document.getElementById('category').addEventListener('change', saveFormData);
+										document.getElementById('build-category').addEventListener('change', saveFormData);
+										document.getElementById('repair-category').addEventListener('change', saveFormData);
+										document.getElementById('message').addEventListener('input', saveFormData);
+										
+										// Add listener for clearing data on form reset
+										document.querySelector('input[type="reset"]').addEventListener('click', clearFormData);
+										</script>
+										
+										
+										
+									
+								</div>
+							</section>
+
+					</div>
+
+								<!-- Footer -->
+								<footer id="footer">
+									<div class="inner">
+										<ul class="icons">
+											<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="https://github.com/Genesis220" class="icon brands alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+											<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+										</ul>
+										<ul class="copyright">
+											<li>&copy; Eglinton & Yonge Computers</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+								</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,97 @@
+/* General styles for all pages */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111; /* Black background */
+    color: #ccc; /* White text */
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+/* Header styles */
+header {
+    background-color: #b30000; /* Red header background */
+    padding: 2rem;
+    text-align: center;
+    color: #ccc;
+}
+
+header h1 {
+    color: #000; /* Black title text */
+}
+
+/* Navigation bar */
+nav {
+    background-color: #000; /* Black navigation background */
+    text-align: center;
+    padding: 1rem;
+}
+
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-size: 1.2rem;
+}
+
+nav a:hover {
+    color: #007BFF; /* Blue hover accent */
+}
+
+/* Container for page content */
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Form styles */
+form {
+    background-color: #333; /* Dark gray form background */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: -10px;
+    border: none;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #ff0000; /* Red button */
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #ff6666; /* Lighter red on hover */
+}
+
+/* Styles for guidelines or sections */
+.guidelines {
+    margin-top: 20px;
+    color: #ff0000; /* Red headings for sections */
+}
+
+h1, h2 {
+    color: #ccc; /* Off White for main headings */
+}
+
+ul, p {
+    margin-bottom: 20px;
+    
+}
+
