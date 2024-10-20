@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{{ page.title }}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <noscript><link rel="stylesheet" href="{{ 'assets/css/noscript.css | relative_url' }}" /></noscript>
+    <style>
+        /* Center and style the iframe */
+        #pdf-viewer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* Set height to 80% of the viewport */
+            width: 100%;  /* Full width */
+            background-color: #f5f5f5; /* Light background around the iframe */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            margin: 0 auto; /* Center horizontally */
+        }
+
+        /* Style the iframe itself */
+        iframe {
+            width: 100%;  /* Full width of its container */
+            height: 100%; /* Full height */
+            border: none; /* Remove default borders */
+            border-radius: 8px; /* Optional rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for iframe */
+        }
+
+    </style>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+    <!-- Header -->
+    <header id="header">
+        <a href="{{ '/index.html' | relative_url }}" class="logo"><strong>Nathan</strong> <span>Lau</span></a>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            <li><a href="{{ '/index.html' | relative_url }}">Home</a></li>
+            <li><a href="{{ '/projects.html' | relative_url }}">Projects</a></li>
+            <li><a href="{{ '/about.html' | relative_url }}">About Me</a></li>
+            <li><a href="{{ '/computers.html' | relative_url }}">Eglinton & Young Computers</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main" class="alt">
+        <section id="one">
+            <div class="inner">
+            <h2>You shouldn't be seeing this.</h2>
+			<p>This is not something you should be seeing. If you're here, just head back to the main page and you can shoot me an email about it. Sorry for the inconvinence.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="https://github.com/Genesis220" class="icon brands alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                <li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Nathan Lau</li>
+                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/jquery.scrolly.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/jquery.scrollex.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/browser.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/breakpoints.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/util.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+<!-- Load PDF.js core script -->
+<script src="{{ '/assets/js/pdf.mjs' | relative_url }}"></script>
+<script>
+    // Configure PDF.js to use the worker
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "{{ '/assets/js/pdf.worker.mjs' | relative_url }}";
+
+    // Load the PDF when the document is ready
+    document.addEventListener("DOMContentLoaded", function() {
+        const pdfPath = "{{ '/assets/pdfs/' | append: page.pdf | relative_url }}"; // Path to your PDF file
+        const loadingTask = pdfjsLib.getDocument(pdfPath);
+
+        loadingTask.promise.then(function(pdf) {
+            console.log('PDF loaded');
+
+            // Fetch the first page
+            pdf.getPage(1).then(function(page) {
+                console.log('Page loaded');
+
+                const scale = 1.5; // Scale for rendering
+                const viewport = page.getViewport({ scale: scale });
+
+                // Prepare canvas using PDF page dimensions
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Append canvas to the viewer div
+                document.getElementById('pdf-viewer').appendChild(canvas);
+
+                // Render PDF page into canvas context
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext).promise.then(function() {
+                    console.log('Page rendered');
+                });
+            });
+        }, function(reason) {
+            console.error(reason);
+        });
+    });
+</script>
+
+</body>
+</html>

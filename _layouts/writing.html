@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Nathan Lau</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<a href="{{ '_site/index.html' | relative_url }}" class="logo"><strong>Nathan</strong> <span>Lau</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="{{ '_site/index.html' | relative_url }}">Home</a></li>
+						<li><a href="{{ '/projects.html' | relative_url }}">Projects</a></li>
+						<li><a href="{{ '/about.html' | relative_url }}">About Me</a></li>
+						<li><a href="{{ '/computers.html' | relative_url }}">Eglinton & Young Computers</a></li>
+					</ul>
+				</nav>
+					<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+						<section id="one">
+							<div class="inner">
+								<header class="major">
+									<h1>{{ page.title }}</h1>
+								</header>
+								<p>Most of these are WIPs. IF you come across one where it just cuts off, thats normal. I am a messy person. Any advice, thoughts, ideas are all appreciated!</p>
+								<p>Welcome to my writing collection. Below are my latest pieces, grouped by date:</p>
+								
+								{% assign current_date = "" %} <!-- Create a variable to track the current date -->
+								
+								<ul class="actions stacked">
+									{% for post in site.posts %}
+										{% capture post_date %}{{ post.date | date: "%B %d, %Y" }}{% endcapture %}
+										
+										<!-- Check if the post date is different from the current date -->
+										{% if post_date != current_date %}
+											<!-- Update the current date to this post's date and show the date as a header -->
+											<li><h2>{{ post.date | date: "%B %d, %Y" }}</h2></li>
+											{% assign current_date = post_date %}
+										{% endif %}
+										
+										<!-- Display the post title under the date -->
+										<li>
+											<a href="{{ post.url }}" class="button next" target="_blank">{{ post.title }}</a>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+						</section>
+						
+
+					</div>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="https://github.com/Genesis220" class="icon brands alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Nathan Lau</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+<script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/jquery.scrolly.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/jquery.scrollex.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/browser.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/breakpoints.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/util.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+<!-- Load PDF.js core script -->
+<script src="{{ '/assets/js/pdf.mjs' | relative_url }}"></script>
+<script>
+    // Configure PDF.js to use the worker
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "{{ '/assets/js/pdf.worker.mjs' | relative_url }}";
+
+    // Load the PDF when the document is ready
+    document.addEventListener("DOMContentLoaded", function() {
+        const pdfPath = "{{ '/assets/pdfs/easy.pdf' | relative_url }}"; // Path to your PDF file
+        const loadingTask = pdfjsLib.getDocument(pdfPath);
+
+        loadingTask.promise.then(function(pdf) {
+            console.log('PDF loaded');
+
+            // Fetch the first page
+            pdf.getPage(1).then(function(page) {
+                console.log('Page loaded');
+
+                const scale = 1.5; // Scale for rendering
+                const viewport = page.getViewport({ scale: scale });
+
+                // Prepare canvas using PDF page dimensions
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Append canvas to the viewer div
+                document.getElementById('pdf-viewer').appendChild(canvas);
+
+                // Render PDF page into canvas context
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext).promise.then(function() {
+                    console.log('Page rendered');
+                });
+            });
+        }, function(reason) {
+            console.error(reason);
+        });
+    });
+</script>
+
+
+		
+	</body>
+</html>
