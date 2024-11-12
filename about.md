@@ -2,4 +2,4 @@
 layout: default
 title: "Nathan Lau"
 ---
-{% includes about.html %}
+{% include about.html %}
