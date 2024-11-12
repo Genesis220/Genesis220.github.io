@@ -1,5 +1,4 @@
 ---
-layout: default
+layout: index
 title: "Nathan Lau"
 ---
-{% include index.html %}

@@ -1,5 +1,4 @@
 ---
-layout: default
+layout: about
 title: "Nathan Lau"
 ---
-{% include about.html %}

@@ -1,5 +1,4 @@
 ---
-layout: default
+layout: projects
 title: "My Projects"
 ---
-{% include projects.html %}
