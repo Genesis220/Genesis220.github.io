@@ -1,141 +1,140 @@
 <!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-    <title>{{ page.title }}</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    <noscript><link rel="stylesheet" href="{{ 'assets/css/noscript.css | relative_url' }}" /></noscript>
-    <style>
-        /* Center and style the iframe */
-        #pdf-viewer-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh; /* Set height to 80% of the viewport */
-            width: 100%;  /* Full width */
-            background-color: #f5f5f5; /* Light background around the iframe */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-            margin: 0 auto; /* Center horizontally */
-        }
+	{% include header.html %}
+				<!-- Banner -->
+					<section id="banner" class="major">
+						<div class="inner">
+							<header class="major">
+								<h1>Hi, my name is Nathan Lau</h1>
+							</header>
+							<div class="content">
+								<p>Welcome to my website, take a look around, <br />
+								and feel free to contact me about anything you see.</p>
+								<ul class="actions">
+									<li><a href="#contact" class="button next scrolly">Contact Me</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
 
-        /* Style the iframe itself */
-        iframe {
-            width: 100%;  /* Full width of its container */
-            height: 100%; /* Full height */
-            border: none; /* Remove default borders */
-            border-radius: 8px; /* Optional rounded corners */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for iframe */
-        }
+				<!-- Main -->
+					<div id="main">
 
-    </style>
-</head>
-<body class="is-preload">
+						<!-- One -->
+							<section id="one" class="tiles">
+								<article>
+									<span class="image">
+										<img src="assets/other/Resume.pdf" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="assets/other/Resume.pdf" class="link" target="_blank">My Resume</a></h3>
+										<p>My qualifications and achievements </p>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="computers.html" class="link">Eglinton & Yonge Computers</a></h3>
+										<p>Check out my Tech services, where I build computers and help troubleshoot</p>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="images/pic03.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="minatures.html" class="link">Minatures and Dioramas</a></h3>
+										<p>Take a look at my Minatures, and Wargaming</p>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="images/pic04.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="writing.html" class="link">Writing</a></h3>
+										<p>Read my Fiction and Non-Fiction works</p>
+									</header>
+								</article>
+							</section>
 
-<!-- Wrapper -->
-<div id="wrapper">
-    <!-- Header -->
-    <header id="header">
-        <a href="{{ '/index.html' | relative_url }}" class="logo"><strong>Nathan</strong> <span>Lau</span></a>
-        <nav>
-            <a href="#menu">Menu</a>
-        </nav>
-    </header>
+						<!-- Two -->
+							<section id="two">
+								<div class="inner">
+									<header class="major">
+										<h2>About Me</h2>
+									</header>
+									<p>Hi, I'm Nathan Lau – thanks for stopping by my site! I'm passionate about writing, gaming, programming, and all things tech. I run the <a href="computers.html" class="link" target="_blank">Eglinton & Yonge Computer Company</a>, where I build computers and help people get the most out of their tech. In my free time, I enjoy creating miniatures, dioramas, and art. If you're curious about my work, feel free to send me an email or head over to my About Me page to learn more!</p>
+									<ul class="actions buttons-inline">
+										<li><a href="#contact" class="button">Contact </a></li>
+										<li><a href="about.html" target="_blank" class="button next">About Me</a></li>
+									</ul>
+								</div>
+							</section>
 
-    <!-- Menu -->
-    <nav id="menu">
-        <ul class="links">
-            <li><a href="{{ '/index.html' | relative_url }}">Home</a></li>
-            <li><a href="{{ '/projects.html' | relative_url }}">Projects</a></li>
-            <li><a href="{{ '/about.html' | relative_url }}">About Me</a></li>
-            <li><a href="{{ '/computers.html' | relative_url }}">Eglinton & Young Computers</a></li>
-        </ul>
-    </nav>
+					</div>
 
-    <!-- Main -->
-    <div id="main" class="alt">
-        <section id="one">
-            <div class="inner">
-            <h2>You shouldn't be seeing this.</h2>
-			<p>This is not something you should be seeing. If you're here, just head back to the main page and you can shoot me an email about it. Sorry for the inconvinence.</p>
-            </div>
-        </section>
-    </div>
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="https://formspree.io/f/movazqjy" target="_blank">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="#">nathanlau2008@gmail.com</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Phone</h3>
+										<span>(437) 244-2725 </span>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-home"></span>
+										<h3>Address</h3>
+										<span>XXX XXXXXXXXXX XXXX #XXXX<br />
+										XXXXXXXXXX, XXX XXXXXX<br />
+										XXXXXXXXXXXX</span>
+									</div>
+								</section>
+							</section>
+						</div>
+					</section>
 
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="inner">
-            <ul class="icons">
-                <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-                <li><a href="https://github.com/Genesis220" class="icon brands alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-                <li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-            </ul>
-            <ul class="copyright">
-                <li>&copy; Nathan Lau</li>
-                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-            </ul>
-        </div>
-    </footer>
+					{% include footer.html %}
 
-</div>
-
-<!-- Scripts -->
-<script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/jquery.scrolly.min.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/jquery.scrollex.min.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/browser.min.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/breakpoints.min.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/util.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-
-<!-- Load PDF.js core script -->
-<script src="{{ '/assets/js/pdf.mjs' | relative_url }}"></script>
-<script>
-    // Configure PDF.js to use the worker
-    pdfjsLib.GlobalWorkerOptions.workerSrc = "{{ '/assets/js/pdf.worker.mjs' | relative_url }}";
-
-    // Load the PDF when the document is ready
-    document.addEventListener("DOMContentLoaded", function() {
-        const pdfPath = "{{ '/assets/pdfs/' | append: page.pdf | relative_url }}"; // Path to your PDF file
-        const loadingTask = pdfjsLib.getDocument(pdfPath);
-
-        loadingTask.promise.then(function(pdf) {
-            console.log('PDF loaded');
-
-            // Fetch the first page
-            pdf.getPage(1).then(function(page) {
-                console.log('Page loaded');
-
-                const scale = 1.5; // Scale for rendering
-                const viewport = page.getViewport({ scale: scale });
-
-                // Prepare canvas using PDF page dimensions
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-
-                // Append canvas to the viewer div
-                document.getElementById('pdf-viewer').appendChild(canvas);
-
-                // Render PDF page into canvas context
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext).promise.then(function() {
-                    console.log('Page rendered');
-                });
-            });
-        }, function(reason) {
-            console.error(reason);
-        });
-    });
-</script>
-
-</body>
+	</body>
 </html>
