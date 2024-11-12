@@ -1,7 +1,8 @@
 ---
-layout:default
+layout: default
+title: "Nathan Lau"
 ---
-				<!-- Main -->
+								<!-- Main -->
 					<div id="main" class="alt">
 
 						<!-- One -->

@@ -1,6 +1,8 @@
 ---
-layout:default
+layout: default
+title: "My Projects"
 ---
+
 				<!-- Banner -->
 				<!-- Note: The "styleN" class below should match that of the header element. -->
 					<section id="banner" class="style2">

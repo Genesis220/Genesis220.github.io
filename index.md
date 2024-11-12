@@ -1,5 +1,6 @@
 ---
-layout:default
+layout: default
+title: "Nathan Lau"
 ---
 				<!-- Banner -->
 					<section id="banner" class="major">
