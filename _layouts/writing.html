@@ -22,19 +22,21 @@
 								
 								<ul class="actions stacked">
 									{% for post in site.posts %}
-										{% capture post_date %}{{ post.date | date: "%B %d, %Y" }}{% endcapture %}
-										
-										<!-- Check if the post date is different from the current date -->
-										{% if post_date != current_date %}
-											<!-- Update the current date to this post's date and show the date as a header -->
-											<li><h2>{{ post.date | date: "%B %d, %Y" }}</h2></li>
-											{% assign current_date = post_date %}
-										{% endif %}
-										
-										<!-- Display the post title under the date -->
-										<li>
-											<a href="{{ post.url }}" class="button next" target="_blank">{{ post.title }}</a>
-										</li>
+											{% unless post.tags contains "videogame" %}
+												{% capture post_date %}{{ post.date | date: "%B %d, %Y" }}{% endcapture %}
+												
+												<!-- Check if the post date is different from the current date -->
+												{% if post_date != current_date %}
+													<!-- Update the current date to this post's date and show the date as a header -->
+													<li><h2>{{ post.date | date: "%B %d, %Y" }}</h2></li>
+													{% assign current_date = post_date %}
+												{% endif %}
+											
+											<!-- Display the post title under the date -->
+											<li>
+												<a href="{{ post.url }}" class="button next" target="_blank">{{ post.title }}</a>
+											</li>
+										{% endunless %}
 									{% endfor %}
 								</ul>
 							</div>
