@@ -8,7 +8,7 @@ gem "jekyll-feed", "~> 0.12", group: :jekyll_plugins
 
 # Additional gems
 # If you want to specify Jekyll, you can uncomment the next line
-gem "jekyll", "~> 4.3.0"
+# gem "jekyll", "~> 4.3.0"
 
 # Windows and JRuby specific gems
 platforms :mingw, :x64_mingw, :mswin, :jruby do
