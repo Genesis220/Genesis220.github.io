@@ -31,6 +31,9 @@ github_username:  genesis220
 theme:
 plugins:
   - jekyll-feed
+exclude:
+  - assets/static
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.

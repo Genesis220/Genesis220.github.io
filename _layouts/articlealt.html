@@ -1,12 +1,30 @@
 {% include header.html %}
+<!-- _layouts/articlealt.html -->
 <!-- Main -->
 <div id="main" class="alt">
-    <!-- One -->
-        <section id="one">
-            <div class="inner">
-                {{ content }}
+    <!-- Banner -->
+    <section id="banner" class="major">
+        <div class="inner">
+            <header class="major">
+                <h1>{{ page.title }}</h1>
+            </header>
+            <div class="content">
+                <ul class="actions">
+                    {% if page.pdf %}
+                    <li><a href="{{ '/assets/pdfs/' | append: page.pdf | relative_url }}" class="button next scrolly">Download</a></li>
+                    {% else %}
+                    <li><a href="{{ '/assets/pdfs/' | append: page.pdf | relative_url }}" class="button next scrolly disabled">Download</a></li>
+                    {% endif %}
+                </ul>
             </div>
-        </section>
-</div>
+        </div>
+    </section>
+    <!-- One -->
+    <section id="one">
+        <div class="inner">
+            {{ content }}
+        </div>
+    </section>
+                
 {% include contactfooter.html %}
 {% include footer.html %}
