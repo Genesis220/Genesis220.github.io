@@ -2,7 +2,6 @@
 layout: articlealt
 title: "Communication, Part 1"
 date: 2024-11-27
-pdf: ""
 ---
 
 
